@@ -166,7 +166,7 @@ python-dotenv
 
 ## 👨‍💻 Developer
 
-**Ahmad** — Python & AI Developer
+**AHMAD NAZZAL** — Python & AI Developer
 
 GitHub:
 
