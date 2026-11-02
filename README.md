@@ -1,9 +1,9 @@
 # 🤖 NEXUS — Multi-Tool AI Agent
 
-> An intelligent AI assistant that automatically selects the right tool based on the user’s request.
+An AI-powered assistant that understands user requests and automatically selects the appropriate tool to provide useful responses.
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square\&logo=python)
-![Flask](https://img.shields.io/badge/Flask-3.0-black?style=flat-square\&logo=flask)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask)
 ![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3-orange?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
@@ -11,55 +11,60 @@
 
 ## ✨ Features
 
-* 🔍 **Web Search** — Retrieves detailed information from Wikipedia (English & Arabic)
-* 🧮 **Smart Calculator** — Understands math operations written in natural language
-* 🌤️ **Live Weather** — Displays temperature and humidity for any city
-* 🎯 **Automatic Tool Selection** — The AI agent decides which tool to use automatically
-* 🌐 **Bilingual Support** — Communicates in both English and Arabic
-* 🎨 **Professional Dark UI** — Modern interface with smooth visual effects
+- 🔍 **Wikipedia Search** — Retrieves information from Wikipedia in English and Arabic.
+- 🧮 **Natural Language Calculator** — Handles mathematical requests expressed in natural language.
+- 🌤️ **Weather Information** — Retrieves weather information, including temperature and humidity, for a requested city.
+- 🎯 **Automatic Tool Selection** — Determines which tool is appropriate for each user request.
+- 🌐 **Bilingual Interaction** — Supports communication in English and Arabic.
+- 🎨 **Dark User Interface** — Provides a modern dark-themed web interface.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology           | Purpose                   |
-| -------------------- | ------------------------- |
-| Python 3.10+         | Core programming language |
-| Flask                | Backend web server        |
-| Groq API (LLaMA 3.3) | AI language model         |
-| Wikipedia API        | Knowledge source          |
-| wttr.in              | Free weather data         |
-| HTML / CSS / JS      | Frontend interface        |
+| Technology | Purpose |
+|---|---|
+| Python 3.10+ | Core programming language |
+| Flask | Web application backend |
+| Groq API (LLaMA 3.3) | Language model and request analysis |
+| Wikipedia API | Information retrieval |
+| wttr.in | Weather information |
+| HTML, CSS, JavaScript | Frontend interface |
 
 ---
 
 ## 📁 Project Structure
 
-```bash
+```text
 nexus-ai-agent/
 │
-├── app.py              # Flask entry point
-├── agent.py            # Agent logic & tool routing
+├── app.py
+├── agent.py
+│
 ├── tools/
 │   ├── __init__.py
-│   ├── search.py       # Wikipedia search tool
-│   ├── calculator.py   # Calculator tool
-│   └── weather.py      # Weather tool using wttr.in
+│   ├── search.py
+│   ├── calculator.py
+│   └── weather.py
+│
 ├── templates/
-│   └── index.html      # Frontend UI
-├── .env                # API keys (not uploaded)
+│   └── index.html
+│
+├── requirements.txt
 ├── .gitignore
-└── requirements.txt
+└── .env.example
 ```
+
+> Make sure this structure matches the actual files in the repository before publishing it. Do not upload your real `.env` file or API keys.
 
 ---
 
-## ⚙️ Setup & Installation
+## ⚙️ Installation & Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/nexus-ai-agent.git
+git clone https://github.com/ahmadnazzal22/nexus-ai-agent.git
 cd nexus-ai-agent
 ```
 
@@ -69,21 +74,19 @@ cd nexus-ai-agent
 python -m venv venv
 ```
 
-Activate it:
+Activate the environment:
 
-#### Windows
+**Windows**
 
 ```bash
 venv\Scripts\activate
 ```
 
-#### Mac/Linux
+**macOS / Linux**
 
 ```bash
 source venv/bin/activate
 ```
-
----
 
 ### 3. Install Dependencies
 
@@ -91,21 +94,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+### 4. Configure the API Key
 
-### 4. Add Your Groq API Key
-
-Create a `.env` file and add:
+Create a `.env` file in the project root directory:
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-Get your free API key from:
+Get your API key from the [Groq Console](https://console.groq.com/).
 
-[Groq Console](https://console.groq.com?utm_source=chatgpt.com)
-
----
+**Important:** Keep your API key private. Never commit your `.env` file to GitHub.
 
 ### 5. Run the Application
 
@@ -113,9 +112,9 @@ Get your free API key from:
 python app.py
 ```
 
-Open your browser at:
+Open your browser and visit:
 
-```bash
+```text
 http://127.0.0.1:5000
 ```
 
@@ -123,39 +122,44 @@ http://127.0.0.1:5000
 
 ## 🧪 Example Queries
 
-| User Question                   | Tool Used     |
-| ------------------------------- | ------------- |
-| Weather in Amman                | 🌤️ Weather   |
-| What is 1500 * 12               | 🧮 Calculator |
-| Who is Ibn Khaldun              | 🔍 Search     |
-| What is artificial intelligence | 🔍 Search     |
-| 25% of 800                      | 🧮 Calculator |
-| Weather in London               | 🌤️ Weather   |
+| Example Request | Expected Tool |
+|---|---|
+| Weather in Amman | 🌤️ Weather |
+| What is 1500 × 12? | 🧮 Calculator |
+| Who is Ibn Khaldun? | 🔍 Wikipedia Search |
+| What is artificial intelligence? | 🔍 Wikipedia Search |
+| What is 25% of 800? | 🧮 Calculator |
+| Weather in London | 🌤️ Weather |
 
 ---
 
-## 🧠 How the Agent Works
+## 🧠 How It Works
 
 ```text
 User submits a question
-        ↓
+          ↓
 LLaMA 3.3 analyzes the request
-        ↓
-Selects the appropriate tool
-(search / calculator / weather)
-        ↓
-Executes the tool and retrieves data
-        ↓
-LLaMA 3.3 formats a natural response
-        ↓
-Displays the result in the UI
+          ↓
+The agent selects the appropriate tool
+          ↓
+Search / Calculator / Weather
+          ↓
+The selected tool processes the request
+          ↓
+The AI generates a natural language response
+          ↓
+The result is displayed in the web interface
 ```
 
 ---
 
-## 📦 requirements.txt
+## 📦 Dependencies
 
-```txt
+The project dependencies are listed in `requirements.txt`.
+
+Main packages:
+
+```text
 flask
 groq
 requests
@@ -166,14 +170,15 @@ python-dotenv
 
 ## 👨‍💻 Developer
 
-**AHMAD NAZZAL** — Python & AI Developer
+**Ahmad Nazzal**
 
-GitHub:
+Python Developer | Exploring AI & Automation
 
-[GitHub Profile](https://github.com/your-username?utm_source=chatgpt.com)
+- GitHub: [ahmadnazzal22](https://github.com/ahmadnazzal22)
+- Project: [NEXUS AI Agent](https://github.com/ahmadnazzal22/nexus-ai-agent)
 
 ---
 
 ## 📄 License
 
-MIT License — Free to use, modify, and distribute.
+This project is licensed under the MIT License.
